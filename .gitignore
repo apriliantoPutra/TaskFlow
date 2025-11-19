@@ -1,3 +1,10 @@
-node_modules/
-dist/
+# Ignore semua node_modules di seluruh project
+**/node_modules/
+
+# Ignore folder build / dist
+**/dist/
+**/build/
+
+# Ignore environment files
 .env
+**/.env
