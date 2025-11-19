@@ -2,21 +2,21 @@ const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false, 
+    host: 'mail.banksampah.cloud',
+    port: 465,       
+    secure: true,    
     auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
+        user: 'admin@banksampah.cloud',
+        pass: 'hC*eT?;8tAzNgwrF'
     },
-    connectionTimeout: 30000, 
+    connectionTimeout: 30000,
     greetingTimeout: 30000,
     socketTimeout: 30000,
     retries: 3,
     retryDelay: 1000
 });
 
-// Test connection on startup
+// Test koneksi saat startup
 transporter.verify(function(error, success) {
     if (error) {
         console.log('SMTP connection error:', error);
@@ -28,7 +28,7 @@ transporter.verify(function(error, success) {
 async function sendVerificationEmail(to, token) {
     try {
         await transporter.sendMail({
-            from: process.env.EMAIL_USER,
+            from: 'admin@banksampah.cloud',
             to,
             subject: "Verifikasi Email Anda",
             text: `Terima kasih telah mendaftar.\n\nTOKEN VERIFIKASI: ${token}\n\nToken berlaku 15 menit.`,
@@ -43,7 +43,7 @@ async function sendVerificationEmail(to, token) {
 async function doneTask(to, title) {
     try {
         await transporter.sendMail({
-            from: process.env.EMAIL_USER,
+            from: 'admin@banksampah.cloud',
             to,
             subject: "Task Selesai",
             text: `Selamat! Task Anda dengan judul ${title}. Telah berhasil diselesaikan.`,
@@ -58,7 +58,7 @@ async function doneTask(to, title) {
 async function reminderTask(to, title, deadline) {
     try {
         await transporter.sendMail({
-            from: process.env.EMAIL_USER,
+            from: 'admin@banksampah.cloud',
             to,
             subject: "Pengingat Task - Deadline H-1",
             text: `Task "${title}" akan mencapai deadline pada: ${deadline}. Segera selesaikan sebelum terlambat!`,
@@ -73,7 +73,7 @@ async function reminderTask(to, title, deadline) {
 async function expiredTask(to, title, deadline) {
     try {
         await transporter.sendMail({
-            from: process.env.EMAIL_USER,
+            from: 'admin@banksampah.cloud',
             to,
             subject: "Task Expired",
             text: `Task "${title}" telah melewati deadline pada: ${deadline} dan otomatis berstatus expired.`,
