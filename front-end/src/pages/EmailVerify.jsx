@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Alert from "../components/Alert";
+import { API_URL } from "../api.js";
 
 const EmailVerify = () => {
   const Navigate = useNavigate();
@@ -14,7 +15,7 @@ const EmailVerify = () => {
     const token = e.target.token.value;
 
     try {
-      const res = await fetch("http://localhost:5000/api/verify", {
+      const res = await fetch(`${API_URL}/verify`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, token }),

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Alert from "../components/Alert";
-
-const API_URL = "http://localhost:5000/api/tasks";
+import { API_URL } from "../api.js";
 
 const Tasks = () => {
   const Navigate = useNavigate();
@@ -40,7 +39,7 @@ const Tasks = () => {
 
   const fetchTasks = async () => {
     try {
-      const res = await fetch(API_URL, {
+      const res = await fetch(`${API_URL}/tasks`, {
         method: "GET",
         headers: authHeaders(),
       });
@@ -84,7 +83,7 @@ const Tasks = () => {
     if (deadline && deadline.length === 16) deadline = `${deadline}:00`;
 
     try {
-      const res = await fetch(API_URL, {
+      const res = await fetch(`${API_URL}/tasks`, {
         method: "POST",
         headers: authHeaders(),
         body: JSON.stringify({
@@ -122,7 +121,7 @@ const Tasks = () => {
     if (deadline && deadline.length === 16) deadline = `${deadline}:00`;
 
     try {
-      const res = await fetch(`${API_URL}/${taskId}/edit`, {
+      const res = await fetch(`${API_URL}/tasks/${taskId}/edit`, {
         method: "PUT",
         headers: authHeaders(),
         body: JSON.stringify({
@@ -154,7 +153,7 @@ const Tasks = () => {
   const handleStatusComplete = async (taskId) => {
     setAlert(null);
     try {
-      const res = await fetch(`${API_URL}/${taskId}/status`, {
+      const res = await fetch(`${API_URL}/tasks/${taskId}/status`, {
         method: "PATCH",
         headers: authHeaders(),
       });
@@ -180,7 +179,7 @@ const Tasks = () => {
     if (!window.confirm("Yakin ingin menghapus task ini?")) return;
     setAlert(null);
     try {
-      const res = await fetch(`${API_URL}/${taskId}`, {
+      const res = await fetch(`${API_URL}/tasks/${taskId}`, {
         method: "DELETE",
         headers: authHeaders(),
       });
