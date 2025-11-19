@@ -42,4 +42,40 @@ Aplikasi ini dibangun menggunakan:
 ---
 
 # 📁 Struktur Folder
+project/
+ ├── backend/
+ │    ├── src/
+ │    │     ├── controllers/
+ │    │     ├── routes/
+ │    │     ├── middleware/
+ │    │     ├── utils/
+ │    │     ├── cron/
+ │    │     ├── app.js
+ │    │     └── ...
+ │    ├── package.json
+ │    └── .env
+ │
+ └── frontend/
+      ├── src/
+      │    ├── pages/
+      │    ├── components/
+      │    ├── context/
+      │    ├── router/
+      │    └── ...
+      ├── package.json
 
+---
+
+## ⚙️ Cara Install Project
+
+Ikuti langkah berikut untuk menjalankan aplikasi TaskFlow secara lengkap.
+
+---
+
+### 🔽 1. Clone Repository
+
+```bash
+git clone https://github.com/USERNAME/TaskFlow.git
+cd TaskFlow
+
+### 🔽 2. Setup Backend
