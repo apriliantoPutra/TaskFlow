@@ -7,17 +7,7 @@ require("./src/cron/taskScheduler");
 
 const app = express();
 
-// Konfigurasi CORS hanya sekali
-const corsOptions = {
-  origin: 'https://task-flow-plum-nine.vercel.app', // frontend domain
-  methods: ['GET','POST','PUT','DELETE','OPTIONS'], // termasuk OPTIONS
-  allowedHeaders: ['Content-Type','Authorization'], // header yang diperbolehkan
-  credentials: true, // jika butuh cookies / auth
-};
-app.use(cors(corsOptions));
-
-// Tambahkan middleware untuk menangani OPTIONS secara global
-app.options('*', cors(corsOptions));
+app.use(cors());
 
 
 app.use(express.json());
