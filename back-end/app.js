@@ -10,7 +10,7 @@ const app = express();
 // Konfigurasi CORS hanya sekali
 const corsOptions = {
   origin: [
-    'https://task-flow-rho-ten.vercel.app', 
+    'https://task-flow-plum-nine.vercel.app', 
   ],
   credentials: true, 
 };
