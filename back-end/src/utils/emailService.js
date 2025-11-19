@@ -3,8 +3,8 @@ require('dotenv').config();
 
 const transporter = nodemailer.createTransport({
     host: 'mail.banksampah.cloud',
-    port: 465,       
-    secure: true,    
+    port: 587,  // Coba port 587 instead of 465
+    secure: false,  // false untuk port 587
     auth: {
         user: 'admin@banksampah.cloud',
         pass: 'hC*eT?;8tAzNgwrF'
@@ -13,7 +13,10 @@ const transporter = nodemailer.createTransport({
     greetingTimeout: 30000,
     socketTimeout: 30000,
     retries: 3,
-    retryDelay: 1000
+    retryDelay: 1000,
+    tls: {
+        rejectUnauthorized: false // Tambahkan ini
+    }
 });
 
 // Test koneksi saat startup
