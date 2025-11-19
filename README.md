@@ -134,3 +134,7 @@ npm run dev
 | Expired  | Ubah status expired + email        |
 | Done     | Email saat user menyelesaikan task |
 
+---
+## 📸Screenshot:
+![Login Page](./screenshots/image1.png)
+![Task List](./screenshots/image2.png)
